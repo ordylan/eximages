@@ -1,0 +1,316 @@
+<!DOCTYPE html>
+<html>
+<head>
+<!--禁止缓存-->
+<meta http-equiv="pragma" content="no-cache">
+<meta http-equiv="cache-control" content="no-cache">
+<meta http-equiv="expires" content="0">
+<!--<script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>-->
+<script>
+//会员获取
+
+/*
+//获取参数
+ var request =
+   {QueryString : function(val){
+   var uri = window.location.search;
+   var re = new RegExp("" +val+ "=([^&?]*)", "ig");
+   return ((uri.match(re))?(uri.match(re)[0].substr(val.length+1)):null);}}
+   var hhhhhh = request.QueryString("miyao");//获得密码
+*/
+
+
+//找饼干
+function getcookie(binggan) {
+    var arrstr = document.cookie.split(";");
+    for (var i = 0; i < arrstr.length; i++) {
+        var temp = arrstr[i].split("=");
+        if (temp[0] == binggan) return unescape(temp[1]);
+    }
+}
+
+
+var oldt = localStorage.stime;
+if(oldt == null || oldt == undefined || oldt == 'NaN') {
+localStorage.stime = 60;
+}
+
+
+
+//vip时间
+window.onload=function(){setInterval(function(){viiptime();},1000);}
+function viiptime(){
+var oldsttt = localStorage.stime;
+var newtt = Number(oldsttt)+Number(0.5);
+localStorage.stime = Number(newtt);
+        var yinianhaomiao = 31536000000
+	var daoqitime = Number(yourtime) + Number(yinianhaomiao);
+	var newddate = new Date();
+	var sytime = (Number(daoqitime) - Number(newddate))/1000;
+	var days = parseInt(sytime/87000);
+   	var hours = parseInt(sytime/3600)-24*days;
+   	var minutes = parseInt(sytime%3600/60);
+   	var seconds = parseInt(sytime%60);
+        var ddiv=document.getElementById("vviptime");
+        ddiv.innerHTML=days+"天"+hours+"时"+minutes+"分"+seconds+"秒";}
+var aaab = getcookie("miyao");
+//miyao找不到
+if(aaab == null || aaab == undefined) {
+document.cookie="miyao=ZnJlZXZpcCZOYU4=; expires=Thu, 31 Dec 2088 00:00:00 GMT";
+window.location.href="index_1.html";}
+else{
+//解析密钥
+jiemibaocundemiyao = window.atob(aaab);
+var hahaa = jiemibaocundemiyao.split('&');
+var yourlevel = hahaa[0];
+var yourtime = hahaa[1]; 
+	var newddaate = new Date();
+	var daoqqitime = Number(yourtime) + Number(31536000000);
+	var syytimee = (Number(daoqqitime) - Number(newddaate));
+if(syytimee < 0) {
+alert("oh,好可惜,你的会员"+yourlevel+"过期了");
+document.cookie="miyao=ZnJlZXZpcCZOYU4=; expires=Thu, 31 Dec 2088 00:00:00 GMT";
+window.location.href="index_1.html";
+}
+}
+
+/*
+if(hhhhhh === aaab) {
+//啥也不干
+}
+else if(aaab == null || aaab == undefined) {
+document.cookie="miyao=ZnJlZXZpcCZOYU4=; expires=Thu, 31 Dec 2088 00:00:00 GMT";
+//document.cookie="tongzhii=0; expires=Thu, 31 Dec 2088 00:00:00 GMT";
+window.location.href="index_1.html";
+}
+else {
+window.location.href="index_1.html?miyao="+aaab;
+}
+*/
+
+var laileyuandeshijian1 = parseInt(Number(oldt)/60);
+var laileyuandeshijian2 = parseInt(Number(oldt)-Number(laileyuandeshijian1)*60);
+var laileyuandeshijian3 = laileyuandeshijian1+"分"+laileyuandeshijian2+"秒";
+
+//huan标识
+function vipUrl() {
+        document.images.vippimage.src = yourlevel + ".png";
+    }
+</script>
+
+<link rel="stylesheet" type="text/css" href="1.css">
+<title>橙子背书系统</title>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<script>
+//激活
+function jieemicode() {
+    var code = document.getElementById("codee").value;
+    ccode = window.atob(code);
+    var str = ccode.split('&');
+    var viplevel = str[0];
+    var viptime = str[1]; 
+    shengyutime2 = str[1]+Number(31536000000)-Number(newddaate)
+if( shengyutime2 > 0 && viplevel == "xianjinvip" || viplevel == "freevip" ||viplevel == "shuijingvip" || viplevel == "huangjinvip" ) {
+  //存放饼干
+   document.cookie="miyao="+code+"; expires=Thu, 31 Dec 2088 00:00:00 GMT";
+   alert("嗯!激活了.");
+     window.location.href="index_1.html";
+}
+   else{
+   alert("密钥错误或密钥已过期");
+}
+}
+</script>
+
+</head>
+<body>
+<header>
+<a href="../../index.html"><img src="back.png" id="b" alt="back"/></a>
+<h1 id="oes">HAPPY学习乐园_橙子背书系统</h1>
+<img src="#" id="vippimage" onerror="vipUrl()">
+</header>
+<!--按钮-->
+<div id="main">
+<a href="javascript:void(0);" onclick="document.getElementById('main').style.display='none';document.getElementById('study').style.display='block';"><div id="b1">学习</div></a>
+<a href="javascript:void(0);" onclick="document.getElementById('main').style.display='none';document.getElementById('duihuanma').style.display='block';"><div id="b2">兑换码兑换</div></a>
+<a href="javascript:void(0);" onclick="document.getElementById('main').style.display='none';document.getElementById('kefu').style.display='block';"><div id="b3">客服</div></a>
+<a href="javascript:void(0);" onclick="document.getElementById('main').style.display='none';document.getElementById('vip').style.display='block';"><div id="b4">vip</div></a>
+<a href="javascript:void(0);" onclick="document.getElementById('main').style.display='none';document.getElementById('about').style.display='block';"><div id="b5">关于</div></a>
+由于平台刚刚发布,代码图片以及动画不完善,敬请见谅!(只是初稿,后期均会调整)
+
+<a href="javascript:void(0);" onclick='document.cookie = "miyao=; expires=Thu, 01 Jan 1970 00:00:00 GMT";localStorage.clear();window.location.href="index_1.html";'>清空使用记录(需重新激活)</a>
+</div>
+
+
+
+<div id="duihuanma" style="display: none;">
+<header>
+<a href="javascript:void(0);" onclick="document.getElementById('main').style.display='block';document.getElementById('duihuanma').style.display='none';"><img src="back.png" id="b" alt="back"/></a>
+<h1 id="oes">橙子背书系统_兑换码</h1>
+
+</header>
+<div id="main2">
+
+<p id="dddhm">请输入兑换码</p>
+<input type="text" id="codee"><br>
+<a href="JavaScript:jieemicode();" id="jhjjh">激活!!!</a>
+</div>
+</div>
+
+<div id="study" style="display: none;">
+<header>
+<a href="javascript:void(0);" onclick="document.getElementById('main').style.display='block';document.getElementById('study').style.display='none';"><img src="back.png" id="b" alt="back"/></a>
+<h1 id="oes">橙子背书系统_书架</h1>
+</header>
+<div id="books">
+维护中
+<!--
+<a href="javascript:void(0);" onclick="document.getElementById('books').style.display='none';document.getElementById('bb1').style.display='block';"><div id="book1">七年级</div></a>
+
+
+<a href="javascript:void(0);" onclick="document.getElementById('books').style.display='none';document.getElementById('bb2').style.display='block';"><div id="book2">八年级</div></a>
+-->
+</div>
+</div>
+
+
+<div id="bb1" style="display: none;">
+<header>
+<a href="javascript:void(0);" onclick="document.getElementById('books').style.display='block';document.getElementById('bb1').style.display='none';"><img src="back.png" id="b" alt="back"/></a>
+<h1 id="oes">书架_七年级</h1>
+</header>
+<div id="main2">
+
+
+</div>
+</div>
+
+
+<div id="bb2" style="display: none;">
+<header>
+<a href="javascript:void(0);" onclick="document.getElementById('books').style.display='block';document.getElementById('bb2').style.display='none';"><img src="back.png" id="b" alt="back"/></a>
+<h1 id="oes">书架_八年级</h1>
+</header>
+<div id="main2">
+<p>橙子背书系统</p>
+<a href="javascript:void(0);" onclick="document.getElementById('listen').style.display='block';lisssten('OESF_8_1');down(81);">第一部分(八上1~3单元)</a>
+<a href="javascript:void(0);" onclick="document.getElementById('listen').style.display='block';lisssten(82);down(82);">第二部分(八上4~6单元)</a>
+</div>
+</div>
+
+<div id="listen" style="display: none;">
+<header>
+<a href="javascript:void(0);" onclick="document.getElementById('listen').style.display='none';"><img src="back.png" id="b" alt="back"/></a>
+<h1 id="oes">收听背书系统</h1>
+</header>
+<div id="main2">
+<p>音频</p>
+<a href="#" id="ddd">下载系统</a>
+<div id="zimu">
+<iframe id="aau" src="#">
+<p>Your browser does not support iframes.</p>
+</iframe>
+</div>
+</div>
+</div>
+
+
+<script>
+function lisssten(url)
+{document.getElementById("aau").src="audios/"+url+".lrc";}
+function down(url)
+{document.getElementById("ddd").href="audios/"+url+".zip";}
+//function ttttc(url){
+//window.open ('audios/'+url+'.html', "播放", "height=888, width=1234, toolbar=no, menubar=no, scrollbars=no, resizable=no, location=no, status=no")
+           // }
+</script>
+
+<div id="kefu" style="display: none;">
+<header>
+<a href="javascript:void(0);" onclick="document.getElementById('main').style.display='block';document.getElementById('kefu').style.display='none';"><img src="back.png" id="b" alt="back"/></a>
+<h1 id="oes">橙子背书系统_客服</h1>
+</header>
+<div id="main2">
+<p>你可以微信联系我(微信号ordylan).公众号联系我(微信号ordylanabc)或者点击<a href="http://ordylanabc.mikecrm.com/BWdaMTx" target="_blank">这里</a>给我留言.</p>
+</div>
+</div>
+
+
+<div id="tztzz" style="display: none;">
+<p>欢迎来到橙子背书系统!这里可以收听背诵课文以背诵.如果你购买了VIP并且这是更换了设备,可以在激活里面填你的兑换码进行恢复购买!</p>
+<a href="javascript:void(0);" onclick="document.getElementById('tztzz').style.display='none';">关闭通知</a>
+</div>
+
+<script>
+//弹窗
+var iv=document.getElementById("tztzz");
+if(!window.localStorage.getItem('storge')){
+    document.getElementById('tztzz').style.display='block';
+    window.localStorage.setItem('storge','true')
+}
+
+if(0 < syytimee && syytimee < 86400000) {
+    document.getElementById('tztzz').style.display='block';
+ iv.innerHTML='时间过得真快!转眼间,你的vip还有不到一天就要过期了!回忆一下过去的一年,是不是背书背得很棒呢!过去的一年你一共学习了'+laileyuandeshijian3+'.要不要续费呢,记得去购买VIP续费哦!\
+<a href=\'javascript:void(0);\' onclick=\"document.getElementById(\'tztzz\').style.display=\'none\';\">关闭通知</a>';
+}
+
+if(172800000 < syytimee && syytimee < 259200000) {
+    document.getElementById('tztzz').style.display='block';
+ iv.innerHTML='注意啦!你的vip还有不到三天就过期了!时间飞逝,过去的一年你一共学习了'+laileyuandeshijian3+',一定要去购买VIP续费哦!\
+<a href=\'javascript:void(0);\' onclick=\"document.getElementById(\'tztzz\').style.display=\'none\';\">关闭通知</a>';
+} 
+      
+if(86400000 < syytimee && syytimee < 172800000) {
+    document.getElementById('tztzz').style.display='block';
+ iv.innerHTML='温馨提示!你的vip还有不到两天就过期了!过去的一年你一共学习了'+laileyuandeshijian3+',记得要去购买VIP续费哦!\
+<a href=\'javascript:void(0);\' onclick=\"document.getElementById(\'tztzz\').style.display=\'none\';\">关闭通知</a>';
+} 
+ 
+</script>
+<div id="vip" style="display: none;">
+<header>
+<a href="javascript:void(0);" onclick="document.getElementById('main').style.display='block';document.getElementById('vip').style.display='none';"><img src="back.png" id="b" alt="back"/></a>
+<h1 id="oes">橙子背书系统_购买专业版</h1>
+</header>
+<div id="main2">
+<script>
+function gettcode(vip) {
+timee = Number(new Date())-Number(31449600000);
+var finishcode1 = vip + '&' + Number(timee);
+var finishcode2 = decodeURIComponent(escape(btoa(finishcode1)));
+     window.location.href="code_view.html?code="+finishcode2;
+}
+</script>
+
+<div id="getvip">当前vip:<img src="#" id="vipimg">剩余时间:<div id="vviptime">无限</div></div>
+<script>
+document.images.vipimg.src = yourlevel+".png";
+</script>
+<div id="hy1">免费VIP</div>
+<div id="hy2">现金VIP</div>
+<div id="hy3">水晶VIP</div>
+<div id="hy4">黄金VIP</div>
+<div>注意!vip以及时间不可叠加.</div>
+
+<table border="1"><tr><td>vip对比</td><td>免费VIP</td><td>现金VIP</td><td>水晶VIP</td><td>黄金VIP</td></tr><tr><td>免费试用一天→</td><td><a href="javascript:void(0);" onclick="gettcode('freevip')">试用(完全不需要)</a></td><td><a href="javascript:void(0);" onclick="gettcode('xianjinvip')">试用(推荐)</a></td><td><a href="javascript:void(0);" onclick="gettcode('shuijingvip')">试用(推荐)</a></td><td><a href="javascript:void(0);" onclick="gettcode('huangjinvip')">试用(推荐)</a></td></tr><tr><td>收听背书系统</td><td>√</td><td>√</td><td>√</td><td>√</td></tr><tr><td>vip专属标识</td><td>×</td><td>√</td><td>√</td><td>√</td></tr><tr><td>专属客服</td><td>√</td><td>√</td><td>√</td><td>√</td></tr><tr><td>解锁全部内容</td><td>√</td><td>√</td><td>√</td><td>√</td></tr><tr><td>提交工单</td><td>×</td><td>×</td><td>×</td><td>×</td></tr></table>
+
+</div>
+</div>
+
+
+
+<div id="about" style="display: none;">
+<header>
+<a href="javascript:void(0);" onclick="document.getElementById('main').style.display='block';document.getElementById('about').style.display='none';"><img src="back.png" id="b" alt="back"/></a>
+<h1 id="oes">橙子背书系统_关于</h1>
+</header>
+<div id="main2">
+<p>欢迎来到橙子背书系统!这里可以收听背诵课文以背诵.如果你觉得你不适合这种方法,你也可以去试试别的方法.经过试验,一篇约10分钟的音频听一个月(懒人背书法,一天听听听一两小时即可)大概是可以背出来的.因为时间紧,本系统只上传我需要的音频,不支持提交工单定制.会员也不是强制充值,充不充都可以使用下载的。</p>
+</div>
+</div>
+
+
+</body>
+</html>
